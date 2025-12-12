@@ -10,9 +10,8 @@
 // const { printName, obj, arr } = require("./file1.js");
 // printName("def");
 // console.log(arr);
-// console.log(obj);
-
-import { sum,obj,arr } from "./file1.js";
-console.log(sum(1,2));
+//  pushingto git hub
+import { sum, obj, arr } from "./file1.js";
+console.log(sum(1, 2));
 console.log(arr);
 console.log(obj);
