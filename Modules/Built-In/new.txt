@@ -7,7 +7,7 @@ import fs, { readFileSync } from  "node:fs";
 // console.log(fs);
 
 
-//? -------=----------------------------------------using fs synchornously--------------------------------------
+//? --------using fs synchornously------------------------- 
 //?----------------create a file-------------------------
 //!1.)create a file
 //!2.)method name -> writeFileSync("path/name" ,"data/content")
@@ -17,7 +17,6 @@ console.log("1");
 // console.log("filecreated")
 // console.log("2");
 console.log("1");
-//?--------------------------wrrite a file---------------------------------------
 fs.writeFileSync("./new.js",`str="hi"`);
 fs.writeFileSync("./new.js",`str="helloi"`);
 console.log("2"); //! if the file is already present then all the previous data will be over-written .
@@ -116,45 +115,13 @@ console.log(is);
 //?------------------------copy the contents of fs.js to a new file fs.txt-------------------------------
 
 //*step-1: read the contents of fs.js
-// let contents=fs.readFileSync("./fs.js","utf-8");
+let contents=fs.readFileSync("./fs.js","utf-8");
 
-// //*step-2 :write the contents
-// fs.appendFileSync("./fs.txt",contents);
-// console.log("filecopied");
+//*step-2 :write the contents
+fs.appendFileSync("./fs.txt",contents);
+console.log("filecopied");
 
 
 //?------------------------to copy the file-------------------------------------------------
-// fs.copyFileSync("source,des");(//*read + append file);
-
-// fs.copyFileSync("./fs.js","./new.txt");
-
-
-//?-------------------------------- for a  asynchronously -----------------------------------------------------
-// remove sync from all methods and add callack ()=>{}
-  //* methodname->readFile("path","encoding ",()=>{})
-// error first callback :first parameter reserved for error in the callback
-// console.log(1);
-
-//     fs.readFile("./index.html","utf-8",(error,data)=>{
-//      if(error){
-//       console.log("error occured",error);
-
-//      } console.log(data);
-     
-
-//     });
-//     console.log(2);
-
-
- console.log(4);
-
-    fs.writeFile("./index.html","helllo user",(error,data)=>{
-if(error){
-      console.log("error occured",error);
-
-     } 
-     console.log(data); //here writeFile will return  void so it is undefine for data 
-     
-     
-    });
-    console.log(5);
+// fs.copyFileSync("source,des");
+fs.copyFileSync("./fs.js","./new.txt");
