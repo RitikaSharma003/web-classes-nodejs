@@ -146,15 +146,115 @@ console.log(is);
 //     console.log(2);
 
 
- console.log(4);
+//  console.log(4);
 
-    fs.writeFile("./index.html","helllo user",(error,data)=>{
-if(error){
-      console.log("error occured",error);
+//     fs.writeFile("./index.html","helllo user",(error,data)=>{
+// if(error){
+//       console.log("error occured",error);
 
-     } 
-     console.log(data); //here writeFile will return  void so it is undefine for data 
+//      } 
+//      console.log(data); //here writeFile will return  void so it is undefine for data 
      
      
-    });
-    console.log(5);
+//     });
+//     console.log(5);
+
+
+
+//     fs.writeFile("./name.csv"," \n this is a new word",(err)=>{
+//       if(err) throw new Error("some error occurred .")
+//         console.log(err);
+//       console.log("file created ");})
+
+//     fs.appendFile("./hello.csv"," \n this is a new word",(err)=>{
+//       if(err)
+//         console.log(err);
+//       console.log("file append ");
+
+//     })
+//      fs.appendFile("./hello.csv"," \n this is a new line",(err)=>{
+//       if(err) 
+//         console.log(err);
+//       console.log("file append ");
+
+//     })
+    
+    //!here problem is that we don't know which callback will get executed  first so we have to write inside async function or inside callback 
+    
+  //   fs.writeFile("./name.csv"," \n this is a new word",(err)=>{
+  //     if(err)
+  //       console.log(err);
+  //     console.log("file created ");
+  // fs.appendFile("./name.csv"," \n this is a new line",(err)=>{
+  //     if(err)
+  //       console.log(err);
+  //     console.log("file append ");
+
+  //   });
+  //    fs.appendFile("./name.csv"," \n this is a 3 append",(err)=>{
+  //     if(err)
+  //       console.log(err);
+  //     console.log("file append ");
+
+  //   });
+    
+  //   })
+  //  here first file will created , then only append 1 will executed after that append 2 
+
+
+
+//?-----------------------------------------------LibUV------------------------------------------
+
+  //!LibUv - It is a C library  used to perform asynchronous I/o operations (file reading, databse call ,network call).It provides a thread pool of 4 worker threads  it is default value . The thread pool size can be increased or decreased . 
+
+  //! main thread will only execute synchronous code 
+  //! main thread offloads any asynchornous code to libUV 
+  //! System kernel - It acts interface between software and hardware.
+  //*some file operations can also handled by system kernel first if not possible then move to LibUV)
+  //*main thread->kernel->libUV
+
+  //?---------------------------------------Concurrency and Parallelisms-----------------------------
+  // work 1 
+  // work 2
+  // concurrency sometimes work 1 for 10 min then 10 min work 2 then again 10 min work 1 
+  // but in parallelisms all 4 work done together 
+
+
+  //!node js have 6 queues
+  //* 1.microstask(nextTick , Promise)
+  //* 2.timer
+  //* 3.i/o
+          //  ->(Pole phase) not a queue 
+  //* 4.check 
+  //* 5.close callbacks 
+
+
+  //?OS levels used to execute code 
+ //? hardware levels have 16 threads either we create how many no of threds in LibUV
+
+ import fsp from "fs/promises" //?means it will return a  promise using any operation 
+//  const fsp=require("fs/promises");
+//  const fsp=require("fs").promises;
+
+//?-----------------------------write a file---------------------------------
+//  let writeFile=fsp.writeFile("./demo.txt","data");
+// writeFile.then((data)=>{
+//   console.log("created");
+// console.log("data");
+
+// }).catch((err)=>{
+// console.log(err);
+
+// })
+ //?--------------------------------------------reading a file------------------------------------
+let readFile=fsp.readFile("./demo.txt" ,"utf-8");
+readFile.then((data)=>{
+
+console.log(data);
+console.log("file read");
+
+}).catch((err)=>{
+console.log(err);
+
+})
+
