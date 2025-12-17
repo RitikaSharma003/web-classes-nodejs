@@ -258,3 +258,29 @@ console.log(err);
 
 })
 
+
+
+//?-------------------------------------append a file----------------------------------------------------
+// let result=fsp.appendFile("./name.csv","this is new data");
+// result.then(()=>{console.log("file appended");
+
+  
+// })
+// .catch((err)=>{
+//   console.log(err);
+
+// })
+
+
+//?---------------------------------async and await ---------------------------------------------
+//!async used in the function declaration and await is used in inside function body . It returns  a promise
+
+//! --------------------------------reading a file------------------------------------------------
+async function readFiles(){
+  let read=await fsp.readFile("./name.csv","utf-8");
+  console.log(read);
+
+}
+readFiles();
+
+
