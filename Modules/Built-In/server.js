@@ -39,7 +39,7 @@ let server = createServer((req, res) => {
   console.log("request accepted");
 
  
-  res.writeHead(202, "ok", { "content-type": "text/plain" });//for giving header
+  res.writeHead(202, "ok", { "content-type": "text/plain" });//for giving  header 
   console.log(req.url);
   console.log(req.method);
  // req and res are streams but datatype is object
@@ -55,3 +55,29 @@ server.listen(9000, (err) => {
 // open browser ->localhost:portnumber
 
 //if we want to close the server press in teminal cTRL+C
+
+
+//?node --watch filename -to restart your server on your own 
+
+
+const http=require("http");
+const fs=require("fs");
+http.createServer((req,res)=>{
+   //res.writeHead(200,{"content-type":"text/html"});
+  //  let htmlContents=fs.readFileSync("./index.html","utf-8");
+   // res.end(htmlContents);
+   res.writeHead(200,{"content-type":"application/json"});
+let resp={
+  succes:true,
+  message:"user registered successfully .",
+  statusCode:201,
+  data:"",
+
+}
+res.end(JSON.stringify(resp));
+
+}).listen(9001,(err)=>{
+  if(err) console.log(err);
+  console.log("server running ");
+
+})

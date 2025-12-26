@@ -38,6 +38,8 @@ console.log("2"); //! if the file is already present then all the previous data 
 let read=fs.readFileSync("./new.js","utf-8");
 console.log(read);
 
+
+
 // {/* <Buffer 6c 65 74 20 75 65 72 6e 6 6d 65 20 3d 20 22 61 62 63 22 3b 0d 0a 6c 65 74 ...60 more bytes></Buffer> */} buffer is an array which stores data in a binary form 
 
 let readable_content=read.toString(); //?default encoding value to string 
@@ -125,3 +127,4 @@ console.log("filecopied");
 //?------------------------to copy the file-------------------------------------------------
 // fs.copyFileSync("source,des");
 fs.copyFileSync("./fs.js","./new.txt");
+
